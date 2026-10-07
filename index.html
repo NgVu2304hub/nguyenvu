@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vu Nguyen — Public Finance</title>
+<meta name="description" content="Vu Nguyen (Nguyễn Vũ) — public finance, taxation and policy analysis for science and technology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f6f2ea; --paper-2:#efe9dd; --ink:#1b2333; --ink-2:#4a5468; --rule:#d9d1c1;
+  --accent:#1f5f4a; --accent-2:#b5532c; --accent-soft:#dfeae4;
+  --serif:"Fraunces",Georgia,serif; --sans:"Inter",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#12161f; --paper-2:#1a2030; --ink:#ece6da; --ink-2:#a7afbf; --rule:#2b3245;
+  --accent:#6cc4a1; --accent-2:#e58a62; --accent-soft:#1d3029;}}
+:root[data-theme="dark"]{
+  --paper:#12161f; --paper-2:#1a2030; --ink:#ece6da; --ink-2:#a7afbf; --rule:#2b3245;
+  --accent:#6cc4a1; --accent-2:#e58a62; --accent-soft:#1d3029;}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.65;font-size:16.5px;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+/* language toggle */
+body.vi .en, body:not(.vi) .vi{display:none}
+
+/* top bar */
+header.top{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.brand{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--ink)}
+.brand span{color:var(--accent)}
+nav.links{display:flex;gap:22px;font-size:.92rem}
+nav.links a{color:var(--ink-2)}
+.ctrls{display:flex;gap:8px}
+.btn-sm{font:500 .8rem var(--mono);border:1px solid var(--rule);background:transparent;color:var(--ink);padding:6px 10px;border-radius:6px;cursor:pointer}
+.btn-sm:hover{border-color:var(--accent);color:var(--accent)}
+@media (max-width:760px){nav.links{display:none}}
+
+/* hero */
+.hero{padding:84px 0 64px;border-bottom:1px solid var(--rule)}
+.eyebrow{font:500 .78rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent-2)}
+.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.05;margin:14px 0 22px;letter-spacing:-.02em}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.lede{max-width:620px;font-size:1.12rem;color:var(--ink-2)}
+.identity{margin-top:44px;display:inline-flex;align-items:baseline;gap:.35em;font-family:var(--serif);font-size:clamp(1.4rem,4vw,2.2rem);padding:18px 26px;border:1px solid var(--rule);border-radius:4px;background:var(--paper-2);flex-wrap:wrap}
+.identity .g{color:var(--accent);font-weight:700;position:relative}
+.identity .g::after{content:"";position:absolute;left:-4px;right:-4px;bottom:-2px;height:.42em;background:var(--accent-soft);z-index:-1}
+.identity small{font:400 .78rem var(--mono);color:var(--ink-2);margin-left:14px}
+.cta{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:11px 20px;border-radius:4px;font-weight:600;font-size:.95rem;border:1px solid var(--ink)}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn.ghost{color:var(--ink)}
+.btn:hover{text-decoration:none;opacity:.88}
+
+/* sections */
+section{padding:76px 0;border-bottom:1px solid var(--rule)}
+.sec-head{display:grid;grid-template-columns:120px 1fr;gap:24px;margin-bottom:36px}
+.sec-no{font:500 .8rem var(--mono);color:var(--accent-2);padding-top:10px}
+.sec-head h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.7rem,3.5vw,2.3rem);letter-spacing:-.01em}
+.sec-head p{color:var(--ink-2);margin-top:6px;max-width:620px}
+.body-col{margin-left:144px}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr;gap:4px}.body-col{margin-left:0}}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:40px}
+.about-grid p+p{margin-top:14px}
+.facts{border-top:2px solid var(--ink)}
+.facts div{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--rule);font-size:.93rem}
+.facts dt{color:var(--ink-2)} .facts dd{font-weight:500;text-align:right}
+@media (max-width:760px){.about-grid{grid-template-columns:1fr}}
+
+/* interests */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.card{background:var(--paper-2);border:1px solid var(--rule);border-radius:4px;padding:24px}
+.card .tag{font:500 .72rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.card h3{font-family:var(--serif);font-weight:600;font-size:1.3rem;margin:8px 0 10px;line-height:1.25}
+.card p{color:var(--ink-2);font-size:.95rem}
+.card ul{margin-top:12px;padding-left:18px;color:var(--ink-2);font-size:.92rem}
+
+/* simulator */
+.sim{display:grid;grid-template-columns:300px 1fr;gap:28px;background:var(--paper-2);border:1px solid var(--rule);border-radius:4px;padding:26px}
+.eq{font:500 .95rem var(--mono);background:var(--paper);border:1px dashed var(--rule);padding:12px 14px;border-radius:4px;margin-bottom:18px;overflow-x:auto}
+.ctl{margin-bottom:16px}
+.ctl label{display:flex;justify-content:space-between;font-size:.88rem;color:var(--ink-2);margin-bottom:4px}
+.ctl output{font:600 .88rem var(--mono);color:var(--ink)}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.verdict{font-size:.9rem;padding:10px 12px;border-left:3px solid var(--accent);background:var(--paper);margin-top:6px}
+.verdict.bad{border-color:var(--accent-2)}
+#chart{width:100%;height:auto;display:block}
+.note{font-size:.8rem;color:var(--ink-2);margin-top:10px}
+@media (max-width:820px){.sim{grid-template-columns:1fr}}
+
+/* projects */
+.proj{display:grid;grid-template-columns:90px 1fr auto;gap:20px;padding:22px 0;border-top:1px solid var(--rule);align-items:start}
+.proj:last-child{border-bottom:1px solid var(--rule)}
+.proj .yr{font:500 .85rem var(--mono);color:var(--ink-2);padding-top:4px}
+.proj h3{font-family:var(--serif);font-weight:600;font-size:1.25rem}
+.proj p{color:var(--ink-2);font-size:.95rem;margin-top:4px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.chip{font:500 .72rem var(--mono);padding:3px 8px;border:1px solid var(--rule);border-radius:99px;color:var(--ink-2)}
+.status{font:500 .72rem var(--mono);padding:4px 9px;border-radius:3px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.status.plan{background:transparent;border:1px solid var(--rule);color:var(--ink-2)}
+@media (max-width:640px){.proj{grid-template-columns:1fr;gap:6px}}
+
+/* toolkit */
+.tk{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;border-top:2px solid var(--ink)}
+.tk div{padding:18px 16px 18px 0;border-bottom:1px solid var(--rule)}
+.tk h4{font:500 .75rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2);margin-bottom:6px}
+.tk p{font-size:.95rem}
+
+/* contact */
+.contact{text-align:left}
+.contact .big{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.2;max-width:760px}
+.contact .row{display:flex;gap:26px;flex-wrap:wrap;margin-top:28px;font:500 .95rem var(--mono)}
+footer{padding:30px 0 50px;font-size:.82rem;color:var(--ink-2)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+.tl{border-left:2px solid var(--rule);padding-left:26px}
+.tl-item{position:relative;padding-bottom:30px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:"";position:absolute;left:-33px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--accent)}
+.tl-item.now::before{background:var(--accent)}
+.tl-date{font:500 .8rem var(--mono);color:var(--accent-2)}
+.tl-item h3{font-family:var(--serif);font-weight:600;font-size:1.2rem;margin-top:2px;line-height:1.3}
+.tl-org{color:var(--ink-2);font-size:.93rem;margin-bottom:6px}
+.tl-item ul{padding-left:18px;color:var(--ink-2);font-size:.94rem}
+.tl-item li+li{margin-top:3px}
+.hl{margin-top:8px;font-size:.88rem;padding:8px 12px;background:var(--accent-soft);border-radius:3px;color:var(--ink)}
+.aw{display:grid;grid-template-columns:110px 1fr;column-gap:20px;border-top:2px solid var(--ink)}
+.aw .y{font:500 .82rem var(--mono);color:var(--ink-2);padding:14px 0;border-bottom:1px solid var(--rule)}
+.aw .t{padding:12px 0;border-bottom:1px solid var(--rule);font-size:.96rem}
+.aw .t b{font-weight:600}
+.aw .t small{display:block;color:var(--ink-2);font-size:.86rem}
+@media (max-width:560px){.aw{grid-template-columns:1fr}.aw .y{border-bottom:0;padding-bottom:0}}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:44px;border-top:1px solid var(--rule)}
+.stats div{padding:16px 16px 0 0}
+.stats b{display:block;font-family:var(--serif);font-size:2rem;font-weight:600;line-height:1.1}
+.stats span{font-size:.85rem;color:var(--ink-2)}
+.pub-meta{font:500 .78rem var(--mono);color:var(--ink-2);margin-top:6px}
+.proj h3{line-height:1.3}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">Vu<span>.</span>Nguyen</a>
+    <nav class="links">
+      <a href="#about"><span class="en">About</span><span class="vi">Giới thiệu</span></a>
+      <a href="#experience"><span class="en">Experience</span><span class="vi">Kinh nghiệm</span></a>
+      <a href="#research"><span class="en">Research</span><span class="vi">Nghiên cứu</span></a>
+      <a href="#awards"><span class="en">Awards</span><span class="vi">Giải thưởng</span></a>
+      <a href="#lab"><span class="en">Fiscal Lab</span><span class="vi">Mô phỏng</span></a>
+      <a href="#contact"><span class="en">Contact</span><span class="vi">Liên hệ</span></a>
+    </nav>
+    <div class="ctrls">
+      <button class="btn-sm" id="langBtn" aria-label="Switch language">VI</button>
+      <button class="btn-sm" id="themeBtn" aria-label="Toggle theme">◐</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="en">Public Finance · Taxation · Science &amp; Technology Policy</span><span class="vi">Tài chính công · Thuế · Chính sách Khoa học &amp; Công nghệ</span></div>
+    <h1>
+      <span class="en">Following the money<br>that builds a <em>nation's future</em>.</span>
+      <span class="vi">Theo dấu dòng tiền<br>kiến tạo <em>tương lai</em> quốc gia.</span>
+    </h1>
+    <p class="lede">
+      <span class="en">I'm Vu Nguyen (Nguyễn Vũ), a civil servant in the Department of Planning – Finance at Vietnam's Ministry of Science and Technology, where I help plan and allocate the state budget for national science, technology, innovation and digital transformation programs. I graduated as valedictorian in Public Finance from the National Economics University.</span>
+      <span class="vi">Mình là Nguyễn Vũ, công chức Vụ Kế hoạch – Tài chính, Bộ Khoa học và Công nghệ. Mình tham gia xây dựng và phân bổ ngân sách nhà nước cho các chương trình quốc gia về khoa học, công nghệ, đổi mới sáng tạo và chuyển đổi số. Mình tốt nghiệp thủ khoa ngành Tài chính công, Đại học Kinh tế Quốc dân.</span>
+    </p>
+    <div class="identity" aria-label="Y equals C plus I plus G plus net exports">
+      Y = C + I + <span class="g">G</span> + (X − M)
+      <small><span class="en">← my focus: G</span><span class="vi">← trọng tâm của mình: G</span></small>
+    </div>
+    <div class="cta">
+      <a class="btn primary" href="#research"><span class="en">See my research</span><span class="vi">Xem nghiên cứu</span></a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/nguyenvu2304">LinkedIn ↗</a>
+      <a class="btn ghost" href="https://github.com/NgVu2304hub">GitHub ↗</a>
+    </div>
+    <div class="stats">
+      <div><b>3.97<small style="font-size:.5em">/4.0</small></b><span class="en">GPA, Public Finance</span><span class="vi">GPA ngành Tài chính công</span></div>
+      <div><b>1/81</b><span class="en">Valedictorian, Cohort 63</span><span class="vi">Thủ khoa khóa 63</span></div>
+      <div><b>2</b><span class="en">Conference papers (2023)</span><span class="vi">Bài hội thảo (2023)</span></div>
+      <div><b>Eiffel</b><span class="en">Excellence Scholarship 2026</span><span class="vi">Học bổng Eiffel 2026</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-no">§ 01</div>
+      <div><h2><span class="en">About</span><span class="vi">Giới thiệu</span></h2></div>
+    </div>
+    <div class="body-col about-grid">
+      <div>
+        <p><span class="en">My work sits where economic theory meets the state budget. I'm interested in public and behavioral economics, taxation, and policy analysis for science and technology — how governments raise and allocate money, and how people and firms respond to fiscal rules.</span>
+        <span class="vi">Mình quan tâm tới điểm giao giữa lý thuyết kinh tế và ngân sách nhà nước: kinh tế học khu vực công và kinh tế học hành vi, thuế, và phân tích chính sách cho khoa học – công nghệ. Cụ thể là Nhà nước huy động và phân bổ nguồn lực ra sao, và người dân, doanh nghiệp phản ứng thế nào trước các quy định tài khóa.</span></p>
+        <p><span class="en">Before joining the Ministry, I worked as a research assistant in Public Finance &amp; Tax Management at NEU, a tax intern at KPMG Vietnam, and a junior advisor at AC&amp;C Consulting — seeing fiscal policy from the classroom, the firm and now the state.</span>
+        <span class="vi">Trước khi về Bộ, mình là trợ giảng – trợ lý nghiên cứu bộ môn Tài chính công &amp; Quản lý thuế tại NEU, thực tập sinh thuế tại KPMG Việt Nam và chuyên viên tư vấn tại AC&amp;C. Nhờ vậy mình được nhìn chính sách tài khóa từ ba góc: giảng đường, doanh nghiệp và nay là cơ quan nhà nước.</span></p>
+      </div>
+      <dl class="facts">
+        <div><dt><span class="en">Current role</span><span class="vi">Hiện tại</span></dt><dd><span class="en">Civil Servant, MOST</span><span class="vi">Công chức, Bộ KH&amp;CN</span></dd></div>
+        <div><dt><span class="en">Degree</span><span class="vi">Bằng cấp</span></dt><dd><span class="en">B.Sc. Public Finance, NEU</span><span class="vi">Cử nhân Tài chính công, NEU</span></dd></div>
+        <div><dt><span class="en">Honours</span><span class="vi">Xếp loại</span></dt><dd><span class="en">First class, valedictorian</span><span class="vi">Xuất sắc, thủ khoa</span></dd></div>
+        <div><dt><span class="en">Based in</span><span class="vi">Nơi ở</span></dt><dd>Hà Nội, Việt Nam</dd></div>
+        <div><dt><span class="en">Languages</span><span class="vi">Ngôn ngữ</span></dt><dd>VI · EN (IELTS 6.5) · FR (A2)</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-no">§ 02</div>
+      <div>
+        <h2><span class="en">Experience</span><span class="vi">Kinh nghiệm</span></h2>
+        <p><span class="en">Fiscal policy from three sides: the state, the firm and the university.</span><span class="vi">Chính sách tài khóa từ ba phía: Nhà nước, doanh nghiệp và học thuật.</span></p>
+      </div>
+    </div>
+    <div class="body-col tl">
+      <div class="tl-item now">
+        <div class="tl-date">03/2026 — <span class="en">present</span><span class="vi">nay</span></div>
+        <h3><span class="en">Civil Servant, Department of Planning – Finance</span><span class="vi">Công chức, Vụ Kế hoạch – Tài chính</span></h3>
+        <div class="tl-org"><span class="en">Ministry of Science and Technology of Vietnam</span><span class="vi">Bộ Khoa học và Công nghệ</span></div>
+        <ul>
+          <li><span class="en">Help formulate and allocate state budget plans for national Science, Technology, Innovation and Digital Transformation (STID) programs.</span><span class="vi">Tham gia xây dựng và phân bổ dự toán ngân sách nhà nước cho các chương trình quốc gia về Khoa học, Công nghệ, Đổi mới sáng tạo và Chuyển đổi số.</span></li>
+          <li><span class="en">Advise on macro-financial mechanisms and public funding strategies to make better use of state capital across STID initiatives.</span><span class="vi">Tham mưu cơ chế tài chính và chiến lược cấp vốn công nhằm sử dụng hiệu quả nguồn vốn nhà nước.</span></li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">10/2023 — 01/2026</div>
+        <h3><span class="en">Research &amp; Teaching Assistant, Public Finance &amp; Tax Management</span><span class="vi">Trợ giảng – Trợ lý nghiên cứu, Tài chính công &amp; Quản lý thuế</span></h3>
+        <div class="tl-org"><span class="en">School of Banking and Finance, National Economics University</span><span class="vi">Viện Ngân hàng – Tài chính, Đại học Kinh tế Quốc dân</span></div>
+        <ul>
+          <li><span class="en">Literature reviews and data analysis for studies on fiscal policy reform and public finance management.</span><span class="vi">Tổng quan tài liệu và phân tích dữ liệu cho các nghiên cứu về cải cách chính sách tài khóa và quản lý tài chính công.</span></li>
+          <li><span class="en">Synthesized policy documents for conferences on draft fiscal legislation; built course materials for 200+ students.</span><span class="vi">Tổng hợp tài liệu chính sách cho hội thảo góp ý dự thảo luật tài khóa; xây dựng học liệu cho hơn 200 sinh viên.</span></li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">09/2025 — 12/2025</div>
+        <h3><span class="en">Junior Advisory – Accountant</span><span class="vi">Chuyên viên tư vấn – Kế toán</span></h3>
+        <div class="tl-org">AC&amp;C Consulting Co. Ltd, <span class="en">Ho Chi Minh City</span><span class="vi">TP. Hồ Chí Minh</span></div>
+        <ul>
+          <li><span class="en">Analyzed how accounting, tax and labor policies affect corporate compliance and investment behavior; reviewed filings for 3+ multinational clients.</span><span class="vi">Phân tích tác động của chính sách kế toán, thuế, lao động tới hành vi tuân thủ và đầu tư của doanh nghiệp; rà soát báo cáo cho hơn 3 khách hàng đa quốc gia.</span></li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">01/2025 — 04/2025</div>
+        <h3><span class="en">Intern, Tax – Global Mobility Services</span><span class="vi">Thực tập sinh Thuế – Dịch vụ Di chuyển Toàn cầu</span></h3>
+        <div class="tl-org">KPMG Vietnam, <span class="en">Ho Chi Minh City</span><span class="vi">TP. Hồ Chí Minh</span></div>
+        <ul>
+          <li><span class="en">Personal income tax and labor-mobility cases for expatriate clients; tax returns, regulatory reports and liaison with authorities.</span><span class="vi">Xử lý hồ sơ thuế thu nhập cá nhân và lao động nước ngoài; lập tờ khai, báo cáo và làm việc với cơ quan chức năng.</span></li>
+        </ul>
+        <div class="hl">★ <span class="en">KPMG Star Reward from the Chairman &amp; CEO of KPMG Vietnam and Cambodia for outstanding performance.</span><span class="vi">Nhận KPMG Star Reward từ Chủ tịch kiêm CEO KPMG Việt Nam và Campuchia vì thành tích xuất sắc.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-no">§ 03</div>
+      <div>
+        <h2><span class="en">Research &amp; publications</span><span class="vi">Nghiên cứu &amp; công bố</span></h2>
+        <p><span class="en">Research interests: public and behavioral economics, public finance, taxation, policy analysis for science &amp; technology.</span><span class="vi">Hướng nghiên cứu: kinh tế học khu vực công và hành vi, tài chính công, thuế, phân tích chính sách khoa học &amp; công nghệ.</span></p>
+      </div>
+    </div>
+    <div class="body-col">
+      <div class="proj">
+        <div class="yr">2023</div>
+        <div>
+          <h3><span class="en">Environmental Tax Policy to Promote Green Growth: International Experiences and the Current Situation in Vietnam</span><span class="vi">Chính sách thuế môi trường thúc đẩy tăng trưởng xanh: Kinh nghiệm quốc tế và thực trạng Việt Nam</span></h3>
+          <p>Nguyen Vu</p>
+          <div class="pub-meta">VANJ 2023 Conference (hybrid) · <span class="en">presented 3 Dec 2023</span><span class="vi">trình bày 03/12/2023</span></div>
+          <div class="chips"><span class="chip"><span class="en">Environmental tax</span><span class="vi">Thuế môi trường</span></span><span class="chip"><span class="en">Green growth</span><span class="vi">Tăng trưởng xanh</span></span></div>
+        </div>
+        <span class="status"><span class="en">Young Researcher Award</span><span class="vi">Giải NC trẻ xuất sắc</span></span>
+      </div>
+      <div class="proj">
+        <div class="yr">2023</div>
+        <div>
+          <h3><span class="en">Factors Influencing the Financial Risk Tolerance of Young People in Vietnam</span><span class="vi">Các yếu tố ảnh hưởng tới khả năng chấp nhận rủi ro tài chính của giới trẻ Việt Nam</span></h3>
+          <p>Vu Hoan Anh Vu, <b>Nguyen Vu</b>, Huynh Anh Thu, Trinh Hai Thuy Duong, Nguyen Sy Nhat Nam</p>
+          <div class="pub-meta">6th International Conference on Finance, Accounting and Auditing · 20 Dec 2023 · ISBN 978-604-330-957-7</div>
+          <div class="chips"><span class="chip"><span class="en">Behavioral finance</span><span class="vi">Tài chính hành vi</span></span><span class="chip"><span class="en">Survey research</span><span class="vi">Khảo sát</span></span></div>
+        </div>
+        <span class="status"><span class="en">Published</span><span class="vi">Đã xuất bản</span></span>
+      </div>
+      <div class="proj">
+        <div class="yr">2024</div>
+        <div>
+          <h3><span class="en">The Management of State Budget Revenues: A Case Study of Buon Don District, Dak Lak Province</span><span class="vi">Quản lý thu ngân sách nhà nước: Nghiên cứu trường hợp huyện Buôn Đôn, tỉnh Đắk Lắk</span></h3>
+          <p><span class="en">Graduation thesis, Public Finance · Supervisor: Assoc. Prof. Dr. Cao Thi Y Nhi</span><span class="vi">Khóa luận tốt nghiệp ngành Tài chính công · GVHD: PGS.TS. Cao Thị Ý Nhi</span></p>
+          <div class="chips"><span class="chip"><span class="en">Budget revenue</span><span class="vi">Thu ngân sách</span></span><span class="chip"><span class="en">Local government</span><span class="vi">Ngân sách địa phương</span></span></div>
+        </div>
+        <span class="status plan"><span class="en">Thesis</span><span class="vi">Khóa luận</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-no">§ 04</div>
+      <div><h2><span class="en">Awards &amp; distinctions</span><span class="vi">Giải thưởng &amp; thành tích</span></h2></div>
+    </div>
+    <div class="body-col aw">
+      <div class="y">2026</div><div class="t"><b><span class="en">France Eiffel Excellence Scholarship</span><span class="vi">Học bổng Xuất sắc Eiffel (Pháp)</span></b><small><span class="en">Master of Economics, Université Paris-Saclay (withdrew)</span><span class="vi">Thạc sĩ Kinh tế, Université Paris-Saclay (không nhận)</span></small></div>
+      <div class="y">2024</div><div class="t"><b><span class="en">Third Prize &amp; Consolation Prize</span><span class="vi">Giải Ba &amp; Giải Khuyến khích</span></b><small><span class="en">NEU Student Scientific Research Competition</span><span class="vi">Nghiên cứu khoa học sinh viên NEU</span></small></div>
+      <div class="y">2023</div><div class="t"><b>KEB Hana Bank Scholarship</b><small><span class="en">Academic performance and leadership potential</span><span class="vi">Thành tích học tập và tiềm năng lãnh đạo</span></small></div>
+      <div class="y">2023</div><div class="t"><b><span class="en">Excellent Young Researcher Award</span><span class="vi">Giải Nhà nghiên cứu trẻ xuất sắc</span></b><small>VANJ Conference 2023</small></div>
+      <div class="y">2023</div><div class="t"><b>NITORI Corporation Scholarship</b><small><span class="en">One of 10 recipients university-wide</span><span class="vi">1 trong 10 sinh viên toàn trường</span></small></div>
+      <div class="y">2023</div><div class="t"><b><span class="en">Top 4 Finalist — TaXpert 2023</span><span class="vi">Top 4 Chung kết — TaXpert 2023</span></b><small><span class="en">Tax policy analysis</span><span class="vi">Phân tích chính sách thuế</span></small></div>
+      <div class="y">2022</div><div class="t"><b><span class="en">Third Prize — Economics Champion 2022</span><span class="vi">Giải Ba — Economics Champion 2022</span></b><small><span class="en">Proposal on digital finance and policy</span><span class="vi">Đề xuất về tài chính số và chính sách</span></small></div>
+      <div class="y">2021–2024</div><div class="t"><b><span class="en">"Excellent Student" — 7 consecutive semesters</span><span class="vi">Sinh viên Xuất sắc — 7/7 học kỳ liên tiếp</span></b><small><span class="en">Plus NEU Merit Scholarship (3 semesters) and "Five-Good Student" at provincial and university levels</span><span class="vi">Cùng Học bổng KKHT NEU (3 kỳ) và danh hiệu Sinh viên 5 tốt cấp tỉnh, cấp trường</span></small></div>
+    </div>
+  </div>
+</section>
+
+<!-- FISCAL LAB -->
+<section id="lab">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-no">§ 05</div>
+      <div>
+        <h2><span class="en">Fiscal Lab: debt dynamics</span><span class="vi">Mô phỏng: động thái nợ công</span></h2>
+        <p><span class="en">Move the sliders to see how interest rates, growth and the primary balance drive the debt-to-GDP ratio.</span><span class="vi">Kéo thanh trượt để xem lãi suất, tăng trưởng và cán cân ngân sách cơ bản tác động thế nào tới tỷ lệ nợ/GDP.</span></p>
+      </div>
+    </div>
+    <div class="body-col sim">
+      <div>
+        <div class="eq">d<sub>t+1</sub> = d<sub>t</sub>·(1+r)/(1+g) − pb</div>
+        <div class="ctl"><label><span><span class="en">Initial debt / GDP</span><span class="vi">Nợ/GDP ban đầu</span></span><output id="o0"></output></label><input type="range" id="d0" min="10" max="150" step="1" value="40"></div>
+        <div class="ctl"><label><span><span class="en">Interest rate r</span><span class="vi">Lãi suất r</span></span><output id="o1"></output></label><input type="range" id="r" min="0" max="12" step="0.1" value="4"></div>
+        <div class="ctl"><label><span><span class="en">Nominal growth g</span><span class="vi">Tăng trưởng danh nghĩa g</span></span><output id="o2"></output></label><input type="range" id="g" min="-2" max="14" step="0.1" value="9"></div>
+        <div class="ctl"><label><span><span class="en">Primary balance pb (% GDP)</span><span class="vi">Cán cân cơ bản pb (% GDP)</span></span><output id="o3"></output></label><input type="range" id="pb" min="-6" max="4" step="0.1" value="-2"></div>
+        <div class="verdict" id="verdict"></div>
+      </div>
+      <div>
+        <svg id="chart" viewBox="0 0 560 320" role="img" aria-label="Debt-to-GDP projection over 20 years"></svg>
+        <p class="note"><span class="en">Illustrative model only — parameters are not official forecasts.</span><span class="vi">Mô hình minh họa — các tham số không phải dự báo chính thức.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION & SKILLS -->
+<section id="toolkit">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-no">§ 06</div>
+      <div><h2><span class="en">Education &amp; skills</span><span class="vi">Học vấn &amp; kỹ năng</span></h2></div>
+    </div>
+    <div class="body-col tk">
+      <div><h4><span class="en">University</span><span class="vi">Đại học</span></h4><p><span class="en">B.Sc. Public Finance, National Economics University (2021–2025)</span><span class="vi">Cử nhân Tài chính công, ĐH Kinh tế Quốc dân (2021–2025)</span></p></div>
+      <div><h4><span class="en">Further study</span><span class="vi">Bồi dưỡng</span></h4><p><span class="en">Pre-Master K13, CASED (13.875/20)</span><span class="vi">Dự bị Thạc sĩ K13, CASED (13,875/20)</span></p></div>
+      <div><h4><span class="en">Methods</span><span class="vi">Phương pháp</span></h4><p><span class="en">Econometrics (EViews), qualitative research, policy impact assessment</span><span class="vi">Kinh tế lượng (EViews), nghiên cứu định tính, đánh giá tác động chính sách</span></p></div>
+      <div><h4><span class="en">Domain</span><span class="vi">Chuyên môn</span></h4><p><span class="en">Public financial management, tax &amp; compliance, budget planning</span><span class="vi">Quản lý tài chính công, thuế &amp; tuân thủ, lập dự toán ngân sách</span></p></div>
+      <div><h4><span class="en">Languages</span><span class="vi">Ngoại ngữ</span></h4><p><span class="en">Vietnamese (native) · English IELTS 6.5 · French TCF A2</span><span class="vi">Tiếng Việt (bản ngữ) · Tiếng Anh IELTS 6.5 · Tiếng Pháp TCF A2</span></p></div>
+      <div><h4><span class="en">Leadership</span><span class="vi">Hoạt động</span></h4><p><span class="en">Class monitor, Public Finance 63B · Youth Union collaborator, Dak Lak</span><span class="vi">Lớp trưởng Tài chính công 63B · Cộng tác viên Đoàn TN tỉnh Đắk Lắk</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-no">§ 07</div>
+      <div><h2><span class="en">Contact</span><span class="vi">Liên hệ</span></h2></div>
+    </div>
+    <div class="body-col">
+      <p class="big"><span class="en">Happy to talk about public finance, tax policy, and funding for science and innovation.</span><span class="vi">Rất vui được trao đổi về tài chính công, chính sách thuế và cơ chế tài chính cho khoa học – đổi mới sáng tạo.</span></p>
+      <div class="row">
+        <a href="mailto:nguyenvuforwork1@gmail.com">nguyenvuforwork1@gmail.com</a>
+        <a href="https://www.linkedin.com/in/nguyenvu2304">LinkedIn ↗</a>
+        <a href="https://github.com/NgVu2304hub">GitHub ↗</a>
+      </div>
+      <p class="note" style="margin-top:18px"><span class="en">Academic references available on request.</span><span class="vi">Thông tin người tham chiếu sẽ được cung cấp khi có yêu cầu.</span></p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> Vu Nguyen</span>
+    <span class="en">Public Finance · Hanoi, Vietnam</span><span class="vi">Tài chính công · Hà Nội, Việt Nam</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // language
+  var body=document.body, langBtn=document.getElementById('langBtn');
+  function setLang(l){ body.classList.toggle('vi', l==='vi'); document.documentElement.lang=l; langBtn.textContent = l==='vi' ? 'EN' : 'VI'; try{localStorage.setItem('lang',l)}catch(e){} draw(); }
+  langBtn.onclick=function(){ setLang(body.classList.contains('vi')?'en':'vi'); };
+
+  // theme
+  var root=document.documentElement;
+  document.getElementById('themeBtn').onclick=function(){
+    var dark = root.dataset.theme ? root.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+    try{localStorage.setItem('theme',root.dataset.theme)}catch(e){}
+    draw();
+  };
+  try{ var t=localStorage.getItem('theme'); if(t) root.dataset.theme=t; }catch(e){}
+
+  document.getElementById('yr').textContent=new Date().getFullYear();
+
+  // debt simulator
+  var ids=['d0','r','g','pb'], els={}, outs=[];
+  ids.forEach(function(id,i){ els[id]=document.getElementById(id); outs[i]=document.getElementById('o'+i); els[id].addEventListener('input',draw); });
+  var svg=document.getElementById('chart'), W=560,H=320,P={l:44,r:16,t:16,b:34}, YEARS=20;
+
+  function css(v){return getComputedStyle(root).getPropertyValue(v).trim();}
+  function draw(){
+    var d0=+els.d0.value, r=+els.r.value/100, g=+els.g.value/100, pb=+els.pb.value;
+    outs[0].textContent=d0+'%'; outs[1].textContent=(r*100).toFixed(1)+'%'; outs[2].textContent=(g*100).toFixed(1)+'%'; outs[3].textContent=(pb>0?'+':'')+pb.toFixed(1)+'%';
+    var s=[d0]; for(var t=1;t<=YEARS;t++){ s.push(Math.max(0, s[t-1]*(1+r)/(1+g) - pb)); }
+    var maxY=Math.max(100, Math.ceil(Math.max.apply(null,s)/25)*25);
+    var x=function(i){return P.l+(W-P.l-P.r)*i/YEARS}, y=function(v){return H-P.b-(H-P.t-P.b)*v/maxY};
+    var ink=css('--ink'), ink2=css('--ink-2'), rule=css('--rule'), acc=css('--accent'), acc2=css('--accent-2');
+    var h='';
+    for(var v=0; v<=maxY; v+=maxY/4){ h+='<line x1="'+P.l+'" x2="'+(W-P.r)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="'+rule+'"/>'+'<text x="'+(P.l-8)+'" y="'+(y(v)+4)+'" text-anchor="end" font-family="JetBrains Mono,monospace" font-size="11" fill="'+ink2+'">'+Math.round(v)+'%</text>'; }
+    for(var i=0;i<=YEARS;i+=5){ h+='<text x="'+x(i)+'" y="'+(H-12)+'" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="'+ink2+'">t+'+i+'</text>'; }
+    // 60% reference line
+    if(60<=maxY){ h+='<line x1="'+P.l+'" x2="'+(W-P.r)+'" y1="'+y(60)+'" y2="'+y(60)+'" stroke="'+acc2+'" stroke-dasharray="5 4"/><text x="'+(W-P.r)+'" y="'+(y(60)-6)+'" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="'+acc2+'">60% '+(body.classList.contains('vi')?'ngưỡng tham chiếu':'reference')+'</text>'; }
+    var pts=s.map(function(v,i){return x(i)+','+y(v)}).join(' ');
+    h+='<polygon points="'+P.l+','+y(0)+' '+pts+' '+x(YEARS)+','+y(0)+'" fill="'+acc+'" opacity=".12"/>';
+    h+='<polyline points="'+pts+'" fill="none" stroke="'+acc+'" stroke-width="2.5" stroke-linejoin="round"/>';
+    h+='<circle cx="'+x(YEARS)+'" cy="'+y(s[YEARS])+'" r="4.5" fill="'+acc+'"/>';
+    h+='<text x="'+(x(YEARS)-8)+'" y="'+(y(s[YEARS])-10)+'" text-anchor="end" font-family="JetBrains Mono,monospace" font-size="12" font-weight="600" fill="'+ink+'">'+s[YEARS].toFixed(1)+'%</text>';
+    svg.innerHTML=h;
+
+    var vi=body.classList.contains('vi'), gap=((r-g)*100).toFixed(1), vd=document.getElementById('verdict');
+    var rising=s[YEARS]>d0;
+    vd.className='verdict'+(rising?' bad':'');
+    vd.innerHTML = vi
+      ? 'r − g = <b>'+gap+' đpt</b>. Sau 20 năm, nợ/GDP '+(rising?'<b>tăng</b>':'<b>giảm</b>')+' từ '+d0+'% lên '.replace(' lên ', rising?' lên ':' xuống ')+'<b>'+s[YEARS].toFixed(1)+'%</b>.'
+      : 'r − g = <b>'+gap+' pp</b>. After 20 years debt/GDP '+(rising?'<b>rises</b>':'<b>falls</b>')+' from '+d0+'% to <b>'+s[YEARS].toFixed(1)+'%</b>.';
+  }
+
+  var saved='en'; try{ saved=localStorage.getItem('lang')||'en'; }catch(e){}
+  setLang(saved);
+})();
+</script>
+</body>
+</html>
